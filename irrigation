@@ -1,0 +1,29 @@
+void setup()
+{
+  pinMode(12, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(A0, INPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  int water_level=analogRead(A0);
+  int moisture_percentage = ((water_level/539.00)*100);
+  Serial.println(moisture_percentage);
+ 
+  if (moisture_percentage<=10){
+  digitalWrite(7, HIGH);
+      digitalWrite(2, HIGH);
+    delay(5000);
+      digitalWrite(7, LOW);
+      digitalWrite(2, LOW);
+
+  }
+   
+   else{
+  digitalWrite(7, LOW);
+       digitalWrite(2, LOW);
+
+    }
+}
